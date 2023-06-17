@@ -27,26 +27,27 @@ const contactsSlice = createSlice({
     },
     filter: '',
   },
-  extraReducers: {
-    [fetchContacts.pending]: (state) => {
-      state.contacts.isLoading = true;
-  state.contacts.error = '';
-    },
-    [fetchContacts.fulfilled]: (state, action) => {
-      state.contacts.isLoading = false;
-  state.contacts.items = action.payload;
-    },
-    [fetchContacts.rejected]: (state, action) => {
-      state.contacts.isLoading = false;
-  state.contacts.error = action.payload;
-    },
-  }
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(fetchContacts.pending, handlePending)
-  //     .addCase(fetchContacts.fulfilled, handleFulfilled)
-  //     .addCase(fetchContacts.rejected, handleRejected)
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchContacts.pending, handlePending)
+      .addCase(fetchContacts.fulfilled, handleFulfilled)
+      .addCase(fetchContacts.rejected, handleRejected)
+  },
+  // extraReducers: {
+  //   [fetchContacts.pending]: (state) => {
+  //     state.contacts.isLoading = true;
+  // state.contacts.error = '';
+  //   },
+  //   [fetchContacts.fulfilled]: (state, action) => {
+  //     state.contacts.isLoading = false;
+  // state.contacts.items = action.payload;
+  //   },
+  //   [fetchContacts.rejected]: (state, action) => {
+  //     state.contacts.isLoading = false;
+  // state.contacts.error = action.payload;
+  //   },
+  // }
+ 
 
   // reducers: {
   //   addContact: (state, action) => ({
