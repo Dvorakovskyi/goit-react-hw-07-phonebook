@@ -1,14 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/contactsSlice';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/thunks';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from './Filter/Filter';
-import Notification from './Notification/Notification';
 import { StyledWrapper } from './App.styled';
 
 const App = () => {
-  const {items} = useSelector(getContacts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <StyledWrapper>
@@ -16,8 +19,7 @@ const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      <ContactList/>
-      {items.length > 0 ? <ContactList /> : <Notification />}
+      <ContactList />
     </StyledWrapper>
   );
 };

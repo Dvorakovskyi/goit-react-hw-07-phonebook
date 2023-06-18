@@ -7,7 +7,6 @@ const handlePending = (state) => {
 };
 
 const handleFulfilled = (state, action) => {
-  console.log(action.payload)
   state.contacts.isLoading = false;
   state.contacts.items = action.payload;
 };
@@ -33,22 +32,9 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, handleFulfilled)
       .addCase(fetchContacts.rejected, handleRejected)
   },
-  // extraReducers: {
-  //   [fetchContacts.pending]: (state) => {
-  //     state.contacts.isLoading = true;
-  // state.contacts.error = '';
-  //   },
-  //   [fetchContacts.fulfilled]: (state, action) => {
-  //     state.contacts.isLoading = false;
-  // state.contacts.items = action.payload;
-  //   },
-  //   [fetchContacts.rejected]: (state, action) => {
-  //     state.contacts.isLoading = false;
-  // state.contacts.error = action.payload;
-  //   },
-  // }
- 
-
+  reducers: {
+    setFilter: (state, action) => ({ ...state, filter: action.payload }),
+  }
   // reducers: {
   //   addContact: (state, action) => ({
   //     ...state,
