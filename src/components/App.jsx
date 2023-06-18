@@ -8,7 +8,7 @@ import Notification from './Notification/Notification';
 import { StyledWrapper } from './App.styled';
 
 const App = () => {
-  const contacts = useSelector(getContacts);
+  const {items} = useSelector(getContacts);
 
   return (
     <StyledWrapper>
@@ -16,7 +16,8 @@ const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      {contacts.length > 0 ? <ContactList /> : <Notification />}
+      <ContactList/>
+      {items.length > 0 ? <ContactList /> : <Notification />}
     </StyledWrapper>
   );
 };

@@ -64,7 +64,7 @@ const contactsSlice = createSlice({
 
 export const contactReduser = contactsSlice.reducer;
 
-export const getContacts = state => state.contacts.items;
+export const getContacts = state => state.contacts;
 export const getFilter = state => state.filter;
 
 export const { addContact, deleteContact, setFilter } = contactsSlice.actions;

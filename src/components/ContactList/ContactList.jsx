@@ -6,11 +6,12 @@ import ContactItem from './ContactItem/ContactItem';
 const ContactList = () => {
   const dispatch = useDispatch();
 
-  const contacts = useSelector(getContacts);
+  const {items} = useSelector(getContacts);
   const filter = useSelector(getFilter);
+  console.log(items)
 
   const getContact = () => {
-    const findContact = contacts.filter(contact => {
+    const findContact = items.filter(contact => {
       return contact.name
         .toLowerCase()
         .trim()
@@ -26,7 +27,7 @@ const ContactList = () => {
       <ul>
         {foundContact.map(({ id, number, name }) => (
           <ContactItem
-            contactsArray={contacts}
+            contactsArray={items}
             key={id}
             name={name}
             number={number}
