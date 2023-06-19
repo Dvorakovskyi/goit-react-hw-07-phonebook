@@ -9,9 +9,9 @@ import { StyledWrapper } from './App.styled';
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <StyledWrapper>

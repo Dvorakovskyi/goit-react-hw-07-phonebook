@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { addContact, getContacts } from 'redux/contactsSlice';
+import { getContacts } from 'redux/contactsSlice';
+import { addContact, fetchContacts } from 'redux/thunks';
 import { Notify } from 'notiflix';
 import {
   StyledForm,
@@ -15,9 +16,13 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
 
   const dispatch = useDispatch();
+
+    useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -35,7 +40,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ id: nanoid(), name, number }));
+    dispatch(addContact({ id: nanoid(), name, phone: number }));
 
     reset();
   };
@@ -43,7 +48,7 @@ const ContactForm = () => {
   const checkContact = textName => {
     const normalizedName = textName.toLowerCase().trim();
 
-    const foundName = contacts.find(
+    const foundName = items.find(
       ({ name }) => name.toLowerCase().trim() === normalizedName
     );
     return Boolean(foundName);

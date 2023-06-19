@@ -6,11 +6,11 @@ import {
   StyledContactDescr,
 } from './ContactItem.styled';
 
-const ContactItem = ({ id, name, number, onClick }) => {
+const ContactItem = ({ id, name, phone, onClick }) => {
   return (
     <StyledItem key={id}>
       <StyledContactDescr>
-        {name}: {number}
+        {name}: {phone}
       </StyledContactDescr>
       <StyledDeleteBtn type="button" onClick={onClick}>
         Delete

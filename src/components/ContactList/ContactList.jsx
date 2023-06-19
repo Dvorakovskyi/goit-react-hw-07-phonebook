@@ -9,10 +9,11 @@ const ContactList = () => {
 
   const { items } = useSelector(getContacts);
   const filter = useSelector(getFilter);
+  console.log(items)
 
   const getContact = () => {
-    const findContact = items.filter(contact => {
-      return contact.name
+    const findContact = items.filter(({name}) => {
+      return name
         .toLowerCase()
         .trim()
         .includes(filter.toLowerCase().trim());
@@ -31,8 +32,8 @@ const ContactList = () => {
               contactsArray={items}
               key={id}
               name={name}
-              number={phone}
-              onClick={() => dispatch(deleteContact(id))}
+              phone={phone}
+              // onClick={() => dispatch(deleteContact(id))}
             />
           ))}
         </ul>
