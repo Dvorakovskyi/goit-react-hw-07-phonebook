@@ -7,6 +7,8 @@ export const postData = async ({ id, name, phone }) => {
       name,
       phone,
     });
+      
+    return { id, name, phone };
   } catch (error) {
     console.log(error);
   }

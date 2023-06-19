@@ -9,14 +9,10 @@ const ContactList = () => {
 
   const { items } = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  console.log(items)
 
   const getContact = () => {
-    const findContact = items.filter(({name}) => {
-      return name
-        .toLowerCase()
-        .trim()
-        .includes(filter.toLowerCase().trim());
+    const findContact = items.filter(({ name }) => {
+      return name.toLowerCase().trim().includes(filter.toLowerCase().trim());
     });
     return findContact;
   };

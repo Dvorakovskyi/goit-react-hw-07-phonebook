@@ -20,7 +20,7 @@ const ContactForm = () => {
 
   const dispatch = useDispatch();
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
