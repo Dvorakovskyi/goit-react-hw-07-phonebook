@@ -22,7 +22,7 @@ const ContactItem = ({ id, name, phone, onClick }) => {
 ContactItem.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
