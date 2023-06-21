@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 import { getContacts } from 'redux/contactsSlice';
 import { addContact, fetchContacts } from 'redux/thunks';
 import { Notify } from 'notiflix';
@@ -40,7 +39,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ id: nanoid(), name, phone: number }));
+    dispatch(addContact({ name, phone: number }));
 
     reset();
   };

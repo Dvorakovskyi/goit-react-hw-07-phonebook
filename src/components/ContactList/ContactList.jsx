@@ -23,24 +23,24 @@ const ContactList = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
-      <section>
-        {items.length > 0 ? (
-          <ul>
-            {foundContact.map(({ id, phone, name }) => (
-              <ContactItem
-                contactsArray={items}
-                key={id}
-                name={name}
-                phone={phone}
-                onClick={() => dispatch(deleteContact(id))}
-              />
-            ))}
-          </ul>
-        ) : (
-          <Notification />
-        )}
-      </section>
+      {isLoading ? <Loader /> :
+        <section>
+          {items.length > 0 ? (
+            <ul>
+              {foundContact.map(({ id, phone, name }) => (
+                <ContactItem
+                  contactsArray={items}
+                  key={id}
+                  name={name}
+                  phone={phone}
+                  onClick={() => dispatch(deleteContact(id))}
+                />
+              ))}
+            </ul>
+          ) : (
+            <Notification />
+          )}
+        </section>}
     </>
   );
 };
